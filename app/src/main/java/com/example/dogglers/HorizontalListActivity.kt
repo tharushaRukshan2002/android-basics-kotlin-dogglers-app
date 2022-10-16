@@ -19,7 +19,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.dogglers.adapter.DogCardAdapter
 import com.example.dogglers.const.Layout
+import com.example.dogglers.data.DataSource
 import com.example.dogglers.databinding.ActivityHorizontalListBinding
+import com.example.dogglers.model.Dog
 
 class HorizontalListActivity : AppCompatActivity() {
 
@@ -29,10 +31,12 @@ class HorizontalListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHorizontalListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val list: List<Dog> = DataSource.dogs
 
         binding.horizontalRecyclerView.adapter = DogCardAdapter(
             applicationContext,
-            Layout.HORIZONTAL
+            Layout.HORIZONTAL,
+            list
         )
 
         // Specify fixed size to improve performance
